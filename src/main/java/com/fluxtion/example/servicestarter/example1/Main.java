@@ -18,6 +18,10 @@ public class Main {
     public static final String LIMIT_READER = "limitReader";
     public static final String MARKET_DATA_GATEWAY = "marketDataGateway";
     public static final String PNL_CHECK = "pnlCheck";
+    public static final String ORDER_PROCESSOR = "orderProcessor";
+    public static final String INTERNAL_ORDER_SOURCE = "internalOrderSource";
+    public static final String ORDER_AUDIT = "orderAudit";
+    public static final String VALID_ORDER_PUBLISHER = "validOrderPublisher";
 
     public static void main(String[] args) {
         Service orderGateway = Service.builder(ORDER_GATEWAY)
@@ -38,9 +42,41 @@ public class Main {
                 .stopTask(Main::emptyTask)
                 .startTask(Main::emptyTask)
                 .build();
+        Service orderProcessor = Service.builder(ORDER_PROCESSOR)
+                .servicesThatRequireMe(pnlCheck)
+                .stopTask(Main::emptyTask)
+                .startTask(Main::emptyTask)
+                .build();
+        //internal orders, do not require pnl check, feed straight into order processor
+        Service internalOrderSource = Service.builder(INTERNAL_ORDER_SOURCE)
+                .requiredServices(orderProcessor)
+                .stopTask(Main::emptyTask)
+                .startTask(Main::emptyTask)
+                .build();
+        //writes valid orders to an audit file for regulators
+        Service orderAudit = Service.builder(ORDER_AUDIT)
+                .servicesThatRequireMe(orderProcessor)
+                .stopTask(Main::emptyTask)
+                .startTask(Main::emptyTask)
+                .build();
+        //publishes valid orders
+        Service validOrderPublisher = Service.builder(VALID_ORDER_PUBLISHER)
+                .servicesThatRequireMe(orderProcessor)
+                .stopTask(Main::emptyTask)
+                .startTask(Main::emptyTask)
+                .build();
 
 
-        ServiceManager svcManager = ServiceManager.build(orderGateway, limitReader, marketDataGateway, pnlCheck);
+        ServiceManager svcManager = ServiceManager.build(
+                orderGateway,
+                limitReader,
+                marketDataGateway,
+                pnlCheck,
+                orderProcessor,
+                internalOrderSource,
+                orderAudit,
+                validOrderPublisher
+        );
         svcManager.registerTaskExecutor(new AsynchronousTaskExecutor());
         svcManager.triggerDependentsOnNotification(true);
         svcManager.triggerNotificationOnSuccessfulTaskExecution(true);

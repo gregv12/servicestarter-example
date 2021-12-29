@@ -53,6 +53,10 @@ public class GuiMain {
         addNode(PNL_CHECK, 325, 150);
         addNode(LIMIT_READER, 50, 150);
         addNode(MARKET_DATA_GATEWAY, 600, 150);
+        addNode(ORDER_PROCESSOR, 325, 250);
+        addNode(INTERNAL_ORDER_SOURCE, 600, 250);
+        addNode(ORDER_AUDIT, 200, 350);
+        addNode(VALID_ORDER_PUBLISHER, 450, 350);
     }
 
     private void addNode(String name, int horizontal, int vertical){
