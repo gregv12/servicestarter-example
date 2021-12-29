@@ -28,20 +28,24 @@ public class Main {
                 .startTask(Main::emptyTask)
                 .stopTask(Main::emptyTask)
                 .build();
+        //push profitability limits to pnlCheck
         Service limitReader = Service.builder(LIMIT_READER)
                 .startTask(Main::emptyTask)
                 .stopTask(Main::emptyTask)
                 .build();
+        //pushes market data to pnlCheck
         Service marketDataGateway = Service.builder(MARKET_DATA_GATEWAY)
                 .startTask(Main::emptyTask)
                 .stopTask(Main::emptyTask)
                 .build();
+        //carries out pnl check on incoming orders - has a complex dependency relationship
         Service pnlCheck = Service.builder(PNL_CHECK)
                 .requiredServices(limitReader, marketDataGateway)
                 .servicesThatRequireMe(orderGateway)
                 .stopTask(Main::emptyTask)
                 .startTask(Main::emptyTask)
                 .build();
+        //processes valid orders
         Service orderProcessor = Service.builder(ORDER_PROCESSOR)
                 .servicesThatRequireMe(pnlCheck)
                 .stopTask(Main::emptyTask)
@@ -65,7 +69,6 @@ public class Main {
                 .stopTask(Main::emptyTask)
                 .startTask(Main::emptyTask)
                 .build();
-
 
         ServiceManager svcManager = ServiceManager.build(
                 orderGateway,

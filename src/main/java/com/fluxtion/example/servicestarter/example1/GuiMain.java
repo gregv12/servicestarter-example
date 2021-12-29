@@ -38,13 +38,25 @@ public class GuiMain {
         mainFrame.add(new JScrollPane(statusTable), BorderLayout.NORTH);
         mainFrame.add(graphPanel, BorderLayout.CENTER);
         mainFrame.add(buttonPanel, BorderLayout.SOUTH);
-        mainFrame.setPreferredSize (new Dimension (900, 650));
+        mainFrame.setPreferredSize(new Dimension(900, 700));
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
 
     private void buildGraphPanel() {
-        graphPanel = new JPanel();
+        graphPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawLine(425, 95, 425, 150);
+                g.drawLine(425, 195, 425, 250);
+                g.drawLine(250, 175, 325, 175);
+                g.drawLine(525, 175, 600, 175);
+                g.drawLine(525, 275, 600, 275);
+                g.drawLine(425, 295, 300, 350);
+                g.drawLine(425, 295, 550, 350);
+            }
+        };
         graphPanel.setBackground(new Color(225, 225, 225));
         graphPanel.setLayout(null);
         graphPanel.setPreferredSize(new Dimension(800, 500));
@@ -59,7 +71,7 @@ public class GuiMain {
         addNode(VALID_ORDER_PUBLISHER, 450, 350);
     }
 
-    private void addNode(String name, int horizontal, int vertical){
+    private void addNode(String name, int horizontal, int vertical) {
         JLabel node = new JLabel(name);
         node.setBackground(Color.lightGray);
         node.setForeground(Color.BLUE);
@@ -148,7 +160,7 @@ public class GuiMain {
             public void setValueAt(Object aValue, int row, int column) {
                 String svcName = statusUpdate.get(row).getServiceName();
                 System.out.println(aValue + "(" + svcName + ")");
-                switch ((String)aValue){
+                switch ((String) aValue) {
                     case "start service" -> serviceManager.startService(svcName);
                     case "stop service" -> serviceManager.stopService(svcName);
                     case "notify started" -> serviceManager.serviceStarted(svcName);
@@ -171,37 +183,36 @@ public class GuiMain {
         columnModel.getColumn(0).setMaxWidth(300);
         columnModel.getColumn(1).setMinWidth(130);
         columnModel.getColumn(1).setCellRenderer(new MyRenderer(Color.lightGray, Color.blue));
-        new ButtonColumn(statusTable,  2);
-        new ButtonColumn(statusTable,  3);
-        new ButtonColumn(statusTable,  4);
-        new ButtonColumn(statusTable,  5);
+        new ButtonColumn(statusTable, 2);
+        new ButtonColumn(statusTable, 3);
+        new ButtonColumn(statusTable, 4);
+        new ButtonColumn(statusTable, 5);
     }
 
-    // Customize the code to set the color for each column in JTable
-    class MyRenderer extends DefaultTableCellRenderer
-    {
+    class MyRenderer extends DefaultTableCellRenderer {
         Color bg, fg;
+
         public MyRenderer(Color bg, Color fg) {
             super();
             this.bg = bg;
             this.fg = fg;
         }
+
         public Component getTableCellRendererComponent(JTable table, Object
-                value, boolean isSelected, boolean hasFocus, int row, int column)
-        {
+                value, boolean isSelected, boolean hasFocus, int row, int column) {
             Component cell = super.getTableCellRendererComponent(table, value,
                     isSelected, hasFocus, row, column);
             ServiceStatusRecord serviceStatusRecord = statusUpdate.get(row);
             JLabel jComponent = nodeMap.get(serviceStatusRecord.getServiceName());
             jComponent.setText("<html>" + serviceStatusRecord.getServiceName() + "<br>" + serviceStatusRecord.getStatus() + "</html>");
-            if(serviceStatusRecord.getStatus()== Service.Status.STARTED){
-                Color green     = new Color(20, 170, 40);
+            if (serviceStatusRecord.getStatus() == Service.Status.STARTED) {
+                Color green = new Color(20, 170, 40);
                 cell.setForeground(green);
                 jComponent.setForeground(green);
-            }else if(serviceStatusRecord.getStatus()== Service.Status.STOPPED){
+            } else if (serviceStatusRecord.getStatus() == Service.Status.STOPPED) {
                 cell.setForeground(Color.RED);
                 jComponent.setForeground(Color.RED);
-            }else{
+            } else {
                 cell.setForeground(fg);
                 jComponent.setForeground(fg);
             }
