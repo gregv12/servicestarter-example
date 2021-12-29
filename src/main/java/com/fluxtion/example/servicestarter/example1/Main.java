@@ -1,15 +1,11 @@
 package com.fluxtion.example.servicestarter.example1;
 
+import com.fluxtion.example.servicestarter.example1.gui.ServiceManagaerFrame;
 import com.fluxtion.example.servicestater.Service;
 import com.fluxtion.example.servicestater.ServiceManager;
-import com.fluxtion.example.servicestater.ServiceStatusRecord;
 import com.fluxtion.example.servicestater.helpers.AsynchronousTaskExecutor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class Main {
@@ -83,7 +79,7 @@ public class Main {
         svcManager.registerTaskExecutor(new AsynchronousTaskExecutor());
         svcManager.triggerDependentsOnNotification(true);
         svcManager.triggerNotificationOnSuccessfulTaskExecution(true);
-        svcManager.registerStatusListener(new GuiMain(svcManager)::logStatus);
+        svcManager.registerStatusListener(new ServiceManagaerFrame(svcManager)::logStatus);
     }
 
 

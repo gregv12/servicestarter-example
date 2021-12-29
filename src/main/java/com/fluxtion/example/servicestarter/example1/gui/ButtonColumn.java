@@ -1,4 +1,4 @@
-package com.fluxtion.example.servicestarter.example1;
+package com.fluxtion.example.servicestarter.example1.gui;
 
 import java.awt.*;
 import java.awt.event.*;

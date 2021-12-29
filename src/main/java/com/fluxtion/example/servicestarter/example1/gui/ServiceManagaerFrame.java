@@ -1,4 +1,4 @@
-package com.fluxtion.example.servicestarter.example1;
+package com.fluxtion.example.servicestarter.example1.gui;
 
 import com.fluxtion.example.servicestater.Service;
 import com.fluxtion.example.servicestater.ServiceManager;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static com.fluxtion.example.servicestarter.example1.Main.*;
 
-public class GuiMain {
+public class ServiceManagaerFrame {
     private JTable statusTable;
     private final List<ServiceStatusRecord> statusUpdate = new ArrayList<>();
     private final Map<String, JLabel> nodeMap = new HashMap<>();
@@ -27,7 +27,7 @@ public class GuiMain {
     private final ServiceManager serviceManager;
     private JPanel graphPanel;
 
-    public GuiMain(ServiceManager serviceManager) {
+    public ServiceManagaerFrame(ServiceManager serviceManager) {
         this.serviceManager = serviceManager;
         JFrame mainFrame = new JFrame("Service starter example");
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -95,11 +95,13 @@ public class GuiMain {
         stop_all.addActionListener(e -> serviceManager.stopAllServices());
 
         JCheckBox triggerOnTaskComplete = new JCheckBox("trigger on task complete", true);
+        triggerOnTaskComplete.setOpaque(false);
         triggerOnTaskComplete.addItemListener(i ->
                 serviceManager.triggerNotificationOnSuccessfulTaskExecution(i.getStateChange() == ItemEvent.SELECTED)
         );
 
         JCheckBox triggerOnNotification = new JCheckBox("trigger on status update", true);
+        triggerOnNotification.setOpaque(false);
         triggerOnNotification.addItemListener(i ->
                 serviceManager.triggerDependentsOnNotification(i.getStateChange() == ItemEvent.SELECTED)
         );
