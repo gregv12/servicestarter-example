@@ -1,11 +1,15 @@
 # servicestarter-example
 
 An example demonstrating the use of [service-starter](https://github.com/gregv12/fluxtion-service-starter). 
-A simulated order processing system forms the requirements for this example.
+
+
+##Running the example
+Execute [Main](src/main/java/com/fluxtion/example/servicestarter/example1/Main.java) from your ide to run the example
 
 ## Overview
-An order gatewy connects to an exchnange and process orders from market participants, 
-accepting orders and not publishing downstream is an unacceptable risk for the business.
+A simulated order processing system forms the requirements for this example. 
+An order gateway connects to an exchange and process orders from market participants, 
+accepting orders and not publishing them internally downstream is an unacceptable risk for the business.
 
 
 The system is event driven the services downstream of the gateway must be running otherwise the gateway must be stopped. 
