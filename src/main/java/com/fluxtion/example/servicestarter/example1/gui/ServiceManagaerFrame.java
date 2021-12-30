@@ -19,6 +19,7 @@ import java.util.Map;
 import static com.fluxtion.example.servicestarter.example1.Main.*;
 
 public class ServiceManagaerFrame {
+    public static final Color GREEN = new Color(0, 150, 90);
     private JTable statusTable;
     private final List<ServiceStatusRecord> statusUpdate = new ArrayList<>();
     private final Map<String, JLabel> nodeMap = new HashMap<>();
@@ -79,10 +80,26 @@ public class ServiceManagaerFrame {
         node.setHorizontalAlignment(SwingConstants.CENTER);
         node.setOpaque(true);
         final int width = 200;
-        final int height = 45;
+        final int height = 46;
         graphPanel.add(node);
         node.setBounds(horizontal, vertical, width, height);
         nodeMap.put(name, node);
+        //start/stopbutton
+        JButton startButton = new JButton(">");
+        startButton.setBackground(GREEN);
+        startButton.setMargin(new Insets(0, 0, 0, 0));
+        startButton.setBounds(horizontal + width, vertical, 35, 23);
+        startButton.addActionListener(a -> serviceManager.startService(name));
+        startButton.setFocusPainted(false);
+        graphPanel.add(startButton);
+        //stop button
+        JButton stopButton = new JButton("X");
+        stopButton.setBackground(new Color(180, 20, 20));
+        stopButton.setMargin(new Insets(0, 0, 0, 0));
+        stopButton.setBounds(horizontal + width, vertical + 23, 35, 23);
+        stopButton.addActionListener(a -> serviceManager.stopService(name));
+        stopButton.setFocusPainted(false);
+        graphPanel.add(stopButton);
     }
 
     private void buildButtonBar() {
@@ -208,9 +225,8 @@ public class ServiceManagaerFrame {
             JLabel jComponent = nodeMap.get(serviceStatusRecord.getServiceName());
             jComponent.setText("<html>" + serviceStatusRecord.getServiceName() + "<br>" + serviceStatusRecord.getStatus() + "</html>");
             if (serviceStatusRecord.getStatus() == Service.Status.STARTED) {
-                Color green = new Color(0, 150, 90);
-                cell.setForeground(green);
-                jComponent.setForeground(green);
+                cell.setForeground(GREEN);
+                jComponent.setForeground(GREEN);
             } else if (serviceStatusRecord.getStatus() == Service.Status.STOPPED) {
                 cell.setForeground(Color.RED);
                 jComponent.setForeground(Color.RED);
