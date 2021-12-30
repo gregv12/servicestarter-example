@@ -24,7 +24,9 @@ The goal of this example is to control the lifecycle of the independent services
 - Start/stop a service without side effects if required
 
 ### Service gui
-The example has a test gui to control services and observe ServiceManager behaviour
+The example has a test gui to control services and observe [ServiceManager](https://github.com/gregv12/fluxtion-service-starter/blob/v0.1.17/src/main/java/com/fluxtion/example/servicestater/ServiceManager.java)
+behaviour
+
 ![](docs/images/order-system.PNG)
 
 
