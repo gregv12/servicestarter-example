@@ -4,7 +4,9 @@ An example demonstrating the use of [service-starter](https://github.com/gregv12
 
 
 ## Running the example
-Execute [Main](src/main/java/com/fluxtion/example/servicestarter/example1/Main.java) from your ide to run the example
+Execute [Main](src/main/java/com/fluxtion/example/servicestarter/example1/Main.java) from your ide to run the example.
+Use the gui to trigger start/stop. The triggering checkboxes control the automated response of ServiceManager to task 
+completion and service status updates.
 
 ## Overview
 A simulated order processing system forms the requirements for this example. 
@@ -28,6 +30,26 @@ The example has a test gui to control services and observe [ServiceManager](http
 behaviour
 
 ![](docs/images/order-system.PNG)
+
+## Description
+
+The components within the system are:
+
+| Service name        | Description                                                   | Requires started services                       |
+|---------------------|---------------------------------------------------------------|-------------------------------------------------|
+| orderGateway        | Connects to exchange and receives orders                      | pnlCheck                                        |
+| limitReader         | Publishes limits for maximum order size                       |                                                 |
+| marketDataGateway   | Publishes market price for assets                             |                                                 |
+| pnlCheck            | Validates an order is within size<br/>and not too loss making | limitReader, marketDataGateway, orderProcessor  |
+| orderProcessor      | Validates order details publishes order for processing        | orderAudit,  validOrderPublisher                |
+| internalOrderSource | Order from internal customers, no pnl check required          | orderProcessor                                  |
+| orderAudit          | Records all valid orders for audit                            |                                                 |
+| validOrderPublisher | Publishes orders and manages risk                             |                                                 |
+
+
+
+
+
 
 
 
