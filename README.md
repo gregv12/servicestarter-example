@@ -3,7 +3,7 @@
 An example demonstrating the use of [service-starter](https://github.com/gregv12/fluxtion-service-starter). 
 
 
-##Running the example
+## Running the example
 Execute [Main](src/main/java/com/fluxtion/example/servicestarter/example1/Main.java) from your ide to run the example
 
 ## Overview
