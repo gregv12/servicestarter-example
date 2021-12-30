@@ -61,7 +61,7 @@ Ensure all service are running then push stop service for the riskManager, the f
 | orderAudit          | STARTED                     |                     |                     |
 | riskManager         | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
 
-![](/docs/images/stopping-riskmanager-1.PNG)
+![](docs/images/stopping-riskmanager-1.PNG)
 
 # Programming the example
 
