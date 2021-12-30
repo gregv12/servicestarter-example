@@ -10,18 +10,18 @@ completion and service status updates.
 
 ## Overview
 A simulated order processing system forms the requirements for this example. 
-An order gateway connects to an exchange and process orders from market participants, 
-accepting orders and not publishing them internally downstream is an unacceptable risk for the business.
+An order gateway connects to an exchange and process orders from market participants. 
+Orders must make it to a running instance of the risk manager, and be recorded for audit.
 
 
-The system is event driven the services downstream of the gateway must be running otherwise the gateway must be stopped. 
-An internal order source submits orders that are not subject to same pnl checks as external orders. 
+If the services downstream of the gateway are not running the gateway must be prevented from accepting new orders. 
+An internal order source submits orders that are not subject to the same pnl checks as external orders. 
 The internal order source is controlled independently to the order gateway, although they share some common downstream components.
 
 The goal of this example is to control the lifecycle of the independent services:
-- Start all, services start in the correct order. The order gateway must be the last component started
-- Stop all, services stop in the correct order. The order gateway must be the first component stopped
-- Stop/start service interactively, ensure dependencies are stopped/started in the correct order
+- Start all services start in the correct order. The order gateway must be the last component started
+- Stop all services stop in the correct order. The order gateway must be the first component stopped
+- Stop/start service interactively ensure dependencies are stopped/started in the correct order
 - React to status updates of a service and start/stop required dependencies
 - Start/stop a service without side effects if required
 
