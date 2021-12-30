@@ -46,6 +46,8 @@ The components within the system are:
 | orderAudit          | Records all valid orders for audit                                |                                                      |
 | riskManager         | Manages risk                                                      |                                                      |
 
+# Programming the example
+
 [Main](src/main/java/com/fluxtion/example/servicestarter/example1/Main.java) defines the dependency relationship between
 services in accordance with the table above.
 
