@@ -46,7 +46,7 @@ The components within the system are:
 | orderAudit          | Records all valid orders for audit                                |                                                      |
 | riskManager         | Manages risk                                                      |                                                      |
 
-## Stopping the riskManager
+# Stopping the riskManager
 Ensure all service are running, un-tick "trigger on task complete" checkbox then stop the risk manager. Un-ticking
 "trigger on task complete" allows the developer to step through the states by manually using notify started buttons.
 
