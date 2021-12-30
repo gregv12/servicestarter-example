@@ -35,21 +35,15 @@ behaviour
 
 The components within the system are:
 
-| Service name        | Description                                                   | Requires started services                            |
-|---------------------|---------------------------------------------------------------|------------------------------------------------------|
-| orderGateway        | Connects to exchange and receives orders                      | pnlCheck                                             |
-| limitReader         | Publishes limits for maximum order size                       |                                                      |
-| marketDataGateway   | Publishes market price for assets                             |                                                      |
-| pnlCheck            | Validates an order is within size<br/>and not too loss making | limitReader<br/>marketDataGateway<br/>orderProcessor |
-| orderProcessor      | Validates order details publishes order for processing        | orderAudit<br/>riskManager                           |
-| internalOrderSource | Order from internal customers, no pnl check required          | orderProcessor                                       |
-| orderAudit          | Records all valid orders for audit                            |                                                      |
-| riskManager         | Manages risk                                                  |                                                      |
-
-
-
-
-
-
+| Service name        | Description                                                       | Requires started services                            |
+|---------------------|-------------------------------------------------------------------|------------------------------------------------------|
+| orderGateway        | Connects to exchange and receives orders                          | pnlCheck                                             |
+| limitReader         | Publishes limits for valid maximum/minimum order sizes            |                                                      |
+| marketDataGateway   | Publishes current market price for assets                         |                                                      |
+| pnlCheck            | Validates an order is within limit size<br/>Off market rate check | limitReader<br/>marketDataGateway<br/>orderProcessor |
+| orderProcessor      | Validates order details                                           | orderAudit<br/>riskManager                           |
+| internalOrderSource | Order from internal customers, no pnl check required              | orderProcessor                                       |
+| orderAudit          | Records all valid orders for audit                                |                                                      |
+| riskManager         | Manages risk                                                      |                                                      |
 
 
