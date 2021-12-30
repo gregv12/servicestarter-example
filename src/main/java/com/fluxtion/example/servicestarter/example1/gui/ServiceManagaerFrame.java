@@ -208,7 +208,7 @@ public class ServiceManagaerFrame {
             JLabel jComponent = nodeMap.get(serviceStatusRecord.getServiceName());
             jComponent.setText("<html>" + serviceStatusRecord.getServiceName() + "<br>" + serviceStatusRecord.getStatus() + "</html>");
             if (serviceStatusRecord.getStatus() == Service.Status.STARTED) {
-                Color green = new Color(20, 170, 40);
+                Color green = new Color(0, 150, 90);
                 cell.setForeground(green);
                 jComponent.setForeground(green);
             } else if (serviceStatusRecord.getStatus() == Service.Status.STOPPED) {
