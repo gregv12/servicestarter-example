@@ -1,6 +1,7 @@
 # servicestarter-example
 
-An example demonstrating the use of [service-starter](https://github.com/gregv12/fluxtion-service-starter). 
+An example demonstrating the use of [service-starter](https://github.com/gregv12/fluxtion-service-starter) to control
+the lifecycle of set of dependent services.
 
 
 ## Running the example
