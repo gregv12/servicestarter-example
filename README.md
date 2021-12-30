@@ -47,9 +47,9 @@ The components within the system are:
 | riskManager         | Manages risk                                                      |                                                      |
 
 ## Stopping the riskManager
-Ensure all service are running then push stop service for the riskManager, the following actions will occur:
+Ensure all service are running then stop the risk manager
 
-
+### Push stop service for the riskManager
 | Service name        | Status                      | Stop task executing | Stop task completed |
 |---------------------|-----------------------------|---------------------|---------------------|
 | orderGateway        | STOPPING                    | yes                 |                     |
@@ -62,6 +62,20 @@ Ensure all service are running then push stop service for the riskManager, the f
 | riskManager         | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
 
 ![](docs/images/stopping-riskmanager-1.PNG)
+
+### Push notify stopped for orderGateway
+| Service name        | Status                      | Stop task executing | Stop task completed |
+|---------------------|-----------------------------|---------------------|---------------------|
+| orderGateway        | STOPPED                     |                     | yes                 |
+| limitReader         | STARTED                     |                     |                     |
+| marketDataGateway   | STARTED                     |                     |                     |
+| pnlCheck            | STOPPING                    | yes                 |                     |
+| orderProcessor      | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
+| internalOrderSource | STOPPING                    | yes                 |                     |
+| orderAudit          | STARTED                     |                     |                     |
+| riskManager         | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
+
+![](docs/images/stopping-riskmanager-2.PNG)
 
 # Programming the example
 
