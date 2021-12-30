@@ -41,10 +41,10 @@ The components within the system are:
 | limitReader         | Publishes limits for maximum order size                       |                                                      |
 | marketDataGateway   | Publishes market price for assets                             |                                                      |
 | pnlCheck            | Validates an order is within size<br/>and not too loss making | limitReader<br/>marketDataGateway<br/>orderProcessor |
-| orderProcessor      | Validates order details publishes order for processing        | orderAudit<br/>validOrderPublisher                   |
+| orderProcessor      | Validates order details publishes order for processing        | orderAudit<br/>riskManager                           |
 | internalOrderSource | Order from internal customers, no pnl check required          | orderProcessor                                       |
 | orderAudit          | Records all valid orders for audit                            |                                                      |
-| validOrderPublisher | Publishes orders and manages risk                             |                                                      |
+| riskManager         | Manages risk                                                  |                                                      |
 
 
 

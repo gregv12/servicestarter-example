@@ -17,7 +17,7 @@ public class Main {
     public static final String ORDER_PROCESSOR = "orderProcessor";
     public static final String INTERNAL_ORDER_SOURCE = "internalOrderSource";
     public static final String ORDER_AUDIT = "orderAudit";
-    public static final String VALID_ORDER_PUBLISHER = "validOrderPublisher";
+    public static final String RISK_MANAGER = "riskManager";
 
     public static void main(String[] args) {
         Service orderGateway = Service.builder(ORDER_GATEWAY)
@@ -60,7 +60,7 @@ public class Main {
                 .startTask(Main::emptyTask)
                 .build();
         //publishes valid orders
-        Service validOrderPublisher = Service.builder(VALID_ORDER_PUBLISHER)
+        Service riskManager = Service.builder(RISK_MANAGER)
                 .servicesThatRequireMe(orderProcessor)
                 .stopTask(Main::emptyTask)
                 .startTask(Main::emptyTask)
@@ -74,7 +74,7 @@ public class Main {
                 orderProcessor,
                 internalOrderSource,
                 orderAudit,
-                validOrderPublisher
+                riskManager
         );
         svcManager.registerTaskExecutor(new AsynchronousTaskExecutor());
         svcManager.triggerDependentsOnNotification(true);
