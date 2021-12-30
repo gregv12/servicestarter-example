@@ -87,16 +87,16 @@ ServiceManager svcManager = ServiceManager.build(
 ```
 
 ### Threading model
-All the requests take place on the gui thread and by default the task would execute on this thread as well. The task sleep
+All the requests take place on the gui thread and by default the task would execute on this thread as well. The task sleeps
 for 1_500 milliseconds which would lock the gui. The ServiceManager is configured to execute with an [AsynchronousTaskExecutor](https://github.com/gregv12/fluxtion-service-starter/blob/v0.1.17/src/main/java/com/fluxtion/example/servicestater/helpers/AsynchronousTaskExecutor.java)
 that runs tasks on worker threads and ensures the gui is not locked during task execution. 
-
-Notifications from the tasks to the ServiceManager are on worker thread. As the ServiceManager is thread safe there is 
-no race with the gui thread updating the ServiceManager at the same time.
 
 ```java
 svcManager.registerTaskExecutor(new AsynchronousTaskExecutor());
 ```
+
+Notifications from the tasks to the ServiceManager are on worker thread. As the ServiceManager is thread safe there is 
+no race with the gui thread updating the ServiceManager at the same time.
 
 ### Automatic triggering on successful
 
