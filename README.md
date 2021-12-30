@@ -11,7 +11,7 @@ completion and service status updates.
 ## Overview
 A simulated order processing system forms the requirements for this example. 
 An order gateway connects to an exchange and process orders from market participants. 
-Orders must make it to a running instances of the risk manager the order audit recorder.
+Orders must make it to a running instance of the risk manager and the order audit recorder.
 
 The goal of this example is to control the lifecycle of the independent services:
 - Start all services start in the correct order. The order gateway must be the last component started
@@ -161,8 +161,8 @@ that runs tasks on worker threads and ensures the gui is not locked during task 
 svcManager.registerTaskExecutor(new AsynchronousTaskExecutor());
 ```
 
-Notifications from the tasks to the ServiceManager are on worker thread. As the ServiceManager is thread safe there is 
-no race with the gui thread updating the ServiceManager at the same time.
+Notifications from the tasks to the ServiceManager are on a worker thread. As the ServiceManager is thread safe there is 
+no race condition with the gui thread trying to update the ServiceManager at the same time.
 
 ## Automatic triggering on successful task execution
 
