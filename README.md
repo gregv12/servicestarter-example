@@ -29,7 +29,7 @@ The goal of this example is to control the lifecycle of the independent services
 The example has a test gui to control services and observe [ServiceManager](https://github.com/gregv12/fluxtion-service-starter/blob/v0.1.17/src/main/java/com/fluxtion/example/servicestater/ServiceManager.java)
 behaviour
 
-![](docs/images/service-starter-example1.gif)
+![](docs/images/service-starter-example2.gif)
 
 ## Description
 
