@@ -47,7 +47,7 @@ The components within the system are:
 | riskManager         | Manages risk                                                      |                                                      |
 
 ## Stopping the riskManager
-Ensure all service are running then stop the risk manager
+Ensure all service are running, untick "trigger on task complete" checkbox then stop the risk manager
 
 ### Push stop service for the riskManager
 | Service name        | Status                      | Stop task executing | Stop task completed |
@@ -76,6 +76,21 @@ Ensure all service are running then stop the risk manager
 | riskManager         | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
 
 ![](docs/images/stopping-riskmanager-2.PNG)
+
+
+### Push notify stopped for internalOrderSource and pnlCheck
+| Service name        | Status                      | Stop task executing | Stop task completed |
+|---------------------|-----------------------------|---------------------|---------------------|
+| orderGateway        | STOPPED                     |                     | yes                 |
+| limitReader         | STARTED                     |                     |                     |
+| marketDataGateway   | STARTED                     |                     |                     |
+| pnlCheck            | STOPPED                     |                     | yes                 |
+| orderProcessor      | STOPPING                    | yes                 |                     |
+| internalOrderSource | STOPPED                     |                     | yes                 |
+| orderAudit          | STARTED                     |                     |                     |
+| riskManager         | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
+
+![](docs/images/stopping-riskmanager-3.PNG)
 
 # Programming the example
 
