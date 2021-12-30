@@ -46,6 +46,23 @@ The components within the system are:
 | orderAudit          | Records all valid orders for audit                                |                                                      |
 | riskManager         | Manages risk                                                      |                                                      |
 
+## Stopping the riskManager
+Ensure all service are running then push stop service for the riskManager, the following actions will occur:
+
+
+| Service name        | Status                      | Stop task executing | Stop task completed |
+|---------------------|-----------------------------|---------------------|---------------------|
+| orderGateway        | STOPPING                    | yes                 |                     |
+| limitReader         | STARTED                     |                     |                     |
+| marketDataGateway   | STARTED                     |                     |                     |
+| pnlCheck            | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
+| orderProcessor      | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
+| internalOrderSource | STOPPING                    | yes                 |                     |
+| orderAudit          | STARTED                     |                     |                     |
+| riskManager         | WAITING_FOR_PARENTS_TO_STOP |                     |                     |
+
+![](/docs/images/stopping-riskmanager-1.PNG)
+
 # Programming the example
 
 [Main](src/main/java/com/fluxtion/example/servicestarter/example1/Main.java) defines the dependency relationship between
