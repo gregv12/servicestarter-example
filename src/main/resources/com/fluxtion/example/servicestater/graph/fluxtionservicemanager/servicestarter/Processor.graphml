@@ -218,20 +218,20 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="RegisterStatusListener">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RegisterStatusListener"/>
-                    <jGraph:Style properties="EVENT"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
         <node id="PublishStatus">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;PublishStatus"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="RegisterStatusListener">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RegisterStatusListener"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -554,12 +554,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="52" source="RegisterStatusListener" target="serviceStatusCache">
+        <edge id="52" source="PublishStatus" target="serviceStatusCache">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="53" source="PublishStatus" target="serviceStatusCache">
+        <edge id="53" source="RegisterStatusListener" target="serviceStatusCache">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
