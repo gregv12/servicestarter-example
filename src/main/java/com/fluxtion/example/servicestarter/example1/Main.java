@@ -24,7 +24,7 @@ public class Main {
                 .startTask(Main::emptyTask)
                 .stopTask(Main::emptyTask)
                 .build();
-        //push profitability limits to pnlCheck
+        //push order limits to pnlCheck
         Service limitReader = Service.builder(LIMIT_READER)
                 .startTask(Main::emptyTask)
                 .stopTask(Main::emptyTask)
@@ -34,7 +34,7 @@ public class Main {
                 .startTask(Main::emptyTask)
                 .stopTask(Main::emptyTask)
                 .build();
-        //carries out pnl check on incoming orders - has a complex dependency relationship
+        //carries out size and off market check on incoming orders - has a complex dependency relationship
         Service pnlCheck = Service.builder(PNL_CHECK)
                 .requiredServices(limitReader, marketDataGateway)
                 .servicesThatRequireMe(orderGateway)
@@ -59,7 +59,7 @@ public class Main {
                 .stopTask(Main::emptyTask)
                 .startTask(Main::emptyTask)
                 .build();
-        //publishes valid orders
+        //riak manages new orders
         Service riskManager = Service.builder(RISK_MANAGER)
                 .servicesThatRequireMe(orderProcessor)
                 .stopTask(Main::emptyTask)
