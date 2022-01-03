@@ -106,9 +106,9 @@ Service orderGateway = Service.builder(ORDER_GATEWAY)
 The code above creates service defintions:
 
 - Each service is provided with a unique name
-- pnlCheck service defines services it requires: limitReader, marketDataGateway
-- pnlCheck defines services that require it: orderGateway.
-- orderProcessor service defines service that require it: pnlCheck
+- **pnlCheck** service defines services it requires: **limitReader, marketDataGateway**
+- **pnlCheck** defines services that require it: **orderGateway**.
+- **orderProcessor** service defines service that require it: **pnlCheck**
 - The start and stop tasks are set to ```Main::emptyTask``` for all services
 
 ```Main::emptyTask``` always succeed after a timed delay of 1_500 milliseconds.
