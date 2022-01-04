@@ -17,7 +17,23 @@
         <dependency>
             <groupId>com.fluxtion.extension</groupId>
             <artifactId>service-starter</artifactId>
-            <version>0.1.17</version>
+            <version>0.1.19</version>
+        </dependency>
+            <dependency>
+                <groupId>com.fluxtion</groupId>
+                <artifactId>compiler</artifactId>
+                <version>3.1.5</version>
+            </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -40,6 +56,47 @@
                             </archive>
                             <outputDirectory>${project.basedir}/dist</outputDirectory>
                             <finalName>servicestarter-orderprocessing-example</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>make-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>fat-jar-aot</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.fluxtion</groupId>
+                    <artifactId>compiler</artifactId>
+                    <version>3.1.5</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <configuration>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.fluxtion.example.servicestarter.example1.CompiledMain</mainClass>
+                                </manifest>
+                            </archive>
+                            <outputDirectory>${project.basedir}/dist</outputDirectory>
+                            <finalName>aot-servicestarter-orderprocessing-example</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                         <executions>

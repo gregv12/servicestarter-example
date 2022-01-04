@@ -191,11 +191,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="RequestStopAll">
+        <node id="RequestServiceStop">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RequestStopAll"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RequestServiceStop"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -209,11 +209,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="RequestServiceStop">
+        <node id="RequestStopAll">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RequestServiceStop"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RequestStopAll"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -254,11 +254,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="RequestStartAll">
+        <node id="PublishStopTask">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RequestStartAll"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;PublishStopTask"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -272,11 +272,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="PublishStopTask">
+        <node id="RequestStartAll">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;PublishStopTask"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;RequestStartAll"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -539,7 +539,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="49" source="RequestStopAll" target="marketDataGateway_stop">
+        <edge id="49" source="RequestServiceStop" target="marketDataGateway_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -549,7 +549,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="51" source="RequestServiceStop" target="marketDataGateway_stop">
+        <edge id="51" source="RequestStopAll" target="marketDataGateway_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -574,7 +574,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="56" source="RequestStopAll" target="orderAudit_stop">
+        <edge id="56" source="RequestServiceStop" target="orderAudit_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -584,7 +584,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="58" source="RequestServiceStop" target="orderAudit_stop">
+        <edge id="58" source="RequestStopAll" target="orderAudit_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -594,7 +594,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="60" source="RequestStopAll" target="limitReader_stop">
+        <edge id="60" source="RequestServiceStop" target="limitReader_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -604,7 +604,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="62" source="RequestServiceStop" target="limitReader_stop">
+        <edge id="62" source="RequestStopAll" target="limitReader_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -614,7 +614,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="64" source="RequestStopAll" target="orderProcessor_stop">
+        <edge id="64" source="RequestServiceStop" target="orderProcessor_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -624,7 +624,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="66" source="RequestServiceStop" target="orderProcessor_stop">
+        <edge id="66" source="RequestStopAll" target="orderProcessor_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -634,7 +634,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="68" source="RequestStopAll" target="riskManager_stop">
+        <edge id="68" source="RequestServiceStop" target="riskManager_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -644,7 +644,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="70" source="RequestServiceStop" target="riskManager_stop">
+        <edge id="70" source="RequestStopAll" target="riskManager_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -654,7 +654,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="72" source="RequestStartAll" target="orderAudit_start">
+        <edge id="72" source="PublishStopTask" target="orderAudit_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -664,7 +664,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="74" source="PublishStopTask" target="orderAudit_start">
+        <edge id="74" source="RequestStartAll" target="orderAudit_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -674,7 +674,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="76" source="RequestStartAll" target="orderProcessor_start">
+        <edge id="76" source="PublishStopTask" target="orderProcessor_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -684,7 +684,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="78" source="PublishStopTask" target="orderProcessor_start">
+        <edge id="78" source="RequestStartAll" target="orderProcessor_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -694,7 +694,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="80" source="RequestStartAll" target="pnlCheck_start">
+        <edge id="80" source="PublishStopTask" target="pnlCheck_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -704,7 +704,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="82" source="PublishStopTask" target="pnlCheck_start">
+        <edge id="82" source="RequestStartAll" target="pnlCheck_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -714,7 +714,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="84" source="RequestStartAll" target="orderGateway_start">
+        <edge id="84" source="PublishStopTask" target="orderGateway_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -724,7 +724,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="86" source="PublishStopTask" target="orderGateway_start">
+        <edge id="86" source="RequestStartAll" target="orderGateway_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -734,7 +734,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="88" source="RequestStartAll" target="internalOrderSource_start">
+        <edge id="88" source="PublishStopTask" target="internalOrderSource_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -744,7 +744,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="90" source="PublishStopTask" target="internalOrderSource_start">
+        <edge id="90" source="RequestStartAll" target="internalOrderSource_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -754,7 +754,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="92" source="RequestStopAll" target="pnlCheck_stop">
+        <edge id="92" source="RequestServiceStop" target="pnlCheck_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -764,7 +764,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="94" source="RequestServiceStop" target="pnlCheck_stop">
+        <edge id="94" source="RequestStopAll" target="pnlCheck_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -774,7 +774,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="96" source="RequestStartAll" target="limitReader_start">
+        <edge id="96" source="PublishStopTask" target="limitReader_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -784,7 +784,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="98" source="PublishStopTask" target="limitReader_start">
+        <edge id="98" source="RequestStartAll" target="limitReader_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -794,7 +794,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="100" source="RequestStartAll" target="marketDataGateway_start">
+        <edge id="100" source="PublishStopTask" target="marketDataGateway_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -804,7 +804,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="102" source="PublishStopTask" target="marketDataGateway_start">
+        <edge id="102" source="RequestStartAll" target="marketDataGateway_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -814,7 +814,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="104" source="RequestStopAll" target="internalOrderSource_stop">
+        <edge id="104" source="RequestServiceStop" target="internalOrderSource_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -824,7 +824,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="106" source="RequestServiceStop" target="internalOrderSource_stop">
+        <edge id="106" source="RequestStopAll" target="internalOrderSource_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -834,7 +834,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="108" source="RequestStopAll" target="orderGateway_stop">
+        <edge id="108" source="RequestServiceStop" target="orderGateway_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -844,7 +844,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="110" source="RequestServiceStop" target="orderGateway_stop">
+        <edge id="110" source="RequestStopAll" target="orderGateway_stop">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -854,7 +854,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="112" source="RequestStartAll" target="riskManager_start">
+        <edge id="112" source="PublishStopTask" target="riskManager_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -864,7 +864,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="114" source="PublishStopTask" target="riskManager_start">
+        <edge id="114" source="RequestStartAll" target="riskManager_start">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
