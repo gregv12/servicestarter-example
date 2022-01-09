@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import static com.fluxtion.example.servicestarter.example1.Main.*;
 
 /**
- * Runs the same example as {@link Main} but uses a pre-compiled {@link com.fluxtion.runtim.EventProcessor} to
+ * Runs the same example as {@link Main} but uses a pre-compiled {@link com.fluxtion.runtime.EventProcessor} to
  * drive the service manager
  */
 @Slf4j
